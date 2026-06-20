@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulos</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0b0f2a, #05060f);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* FUNDO ESTRELADO */
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: transparent;
+  box-shadow: 
+    0 0 2px #fff,
+    20px 30px #fff,
+    40px 80px #fff,
+    120px 200px #fff,
+    200px 300px #fff,
+    300px 400px #fff,
+    400px 500px #fff,
+    500px 600px #fff;
+  animation: moveStars 120s linear infinite;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-1000px); }
+}
+
+/* TELA INICIAL */
+#intro {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  background: rgba(0,0,0,0.6);
+}
+
+#intro h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #6c5ce7;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* CONTAINER PRINCIPAL */
+#container {
+  display: none;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* PROGRESSO */
+#progressBar {
+  width: 100%;
+  height: 10px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #6c5ce7, #00cec9);
+  transition: 0.5s;
+}
+
+/* CAPÍTULOS */
+.chapter {
+  background: rgba(255,255,255,0.05);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  opacity: 0.5;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.chapter.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1.02);
+}
+
+.chapter h2 {
+  margin-bottom: 8px;
+  color: #a29bfe;
+}
+
+.lock {
+  float: right;
+  color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>Uma história em capítulos</h1>
+  <button onclick="start()">Entrar</button>
+</div>
+
+<!-- CONTAINER -->
+<div id="container">
+
+  <div id="progressBar">
+    <div id="progress"></div>
+  </div>
+
+  <div class="chapter active" id="c1">
+    <h2>Capítulo 1 <span class="lock">🔓</span></h2>
+    <p>Quem é ela para mim...</p>
+  </div>
+
+  <div class="chapter" id="c2">
+    <h2>Capítulo 2 <span class="lock">🔒</span></h2>
+    <p>Dores e momentos difíceis...</p>
+  </div>
+
+  <div class="chapter" id="c3">
+    <h2>Capítulo 3 <span class="lock">🔒</span></h2>
+    <p>Meus erros e aprendizados...</p>
+  </div>
+
+  <div class="chapter" id="c4">
+    <h2>Capítulo 4 <span class="lock">🔒</span></h2>
+    <p>Distância e saudade...</p>
+  </div>
+
+</div>
+
+<script>
+function start() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("container").style.display = "block";
+}
+
+// progresso inicial
+let progress = 25;
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("progress").style.width = progress + "%";
+});
+</script>
+
+</body>
+</html>
