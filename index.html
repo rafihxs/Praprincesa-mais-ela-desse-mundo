@@ -189,4 +189,367 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </body>
+
 </html>
+
+<!-- CAPÍTULO 1 (DETALHADO) -->
+<div class="chapter active" id="c1" onclick="openChapter(1)">
+  <h2>Capítulo 1 <span class="lock">🔓</span></h2>
+  <p>O começo de tudo… o quanto ela significa para mim.</p>
+</div>
+
+<!-- CAPÍTULO 2 -->
+<div class="chapter" id="c2" onclick="openChapter(2)">
+  <h2>Capítulo 2 <span class="lock">🔒</span></h2>
+  <p>As dores que ela enfrenta e os dias difíceis.</p>
+</div>
+
+<!-- CAPÍTULO 3 -->
+<div class="chapter" id="c3" onclick="openChapter(3)">
+  <h2>Capítulo 3 <span class="lock">🔒</span></h2>
+  <p>Meus erros e o que eu finalmente entendi.</p>
+</div>
+
+<!-- CAPÍTULO 4 -->
+<div class="chapter" id="c4" onclick="openChapter(4)">
+  <h2>Capítulo 4 <span class="lock">🔒</span></h2>
+  <p>A distância, a saudade e o silêncio das noites.</p>
+</div>
+
+<!-- ÁREA DE LEITURA -->
+<div id="reader" style="display:none; padding:20px; margin-top:20px; background:rgba(0,0,0,0.4); border-radius:10px;">
+  <h2 id="chapterTitle"></h2>
+  <p id="chapterText"></p>
+</div>
+
+<script>
+let currentChapter = 1;
+
+function openChapter(n) {
+  if (n > currentChapter) return;
+
+  const texts = {
+    1: `Ela não é apenas alguém importante para mim.
+Ela é alguém que mudou a forma como eu enxergo o mundo.
+Mesmo nos dias difíceis, mesmo quando tudo parece distante,
+eu ainda penso nela como algo raro, único...`,
+    
+    2: `Eu aprendi a perceber que existem dias em que ela sente dor,
+cansaço, cólicas, estresse do trabalho e momentos em que ela só quer silêncio.
+E isso não é fraqueza.
+É humano.
+E eu nem sempre respeitei isso como deveria...`,
+    
+    3: `Eu cometi erros.
+Pressionei em momentos errados.
+Insisti quando devia ter dado espaço.
+Pedi coisas que acabaram pesando.
+E hoje eu entendo o impacto disso...`,
+    
+    4: `A distância não é só física.
+Ela também é emocional.
+Tem noites em que eu acordo no meio da madrugada,
+pensando em tudo, e às vezes até chorando em silêncio...`
+  };
+
+  document.getElementById("reader").style.display = "block";
+  document.getElementById("chapterTitle").innerText = "Capítulo " + n;
+  document.getElementById("chapterText").innerText = texts[n];
+
+  if (n === currentChapter && currentChapter < 4) {
+    currentChapter++;
+    unlockChapter(currentChapter);
+    updateProgress();
+  }
+}
+
+function unlockChapter(n) {
+  const ch = document.getElementById("c" + n);
+  if (ch) {
+    ch.classList.add("active");
+  }
+}
+
+function updateProgress() {
+  let progress = (currentChapter - 1) * 25;
+  document.getElementById("progress").style.width = progress + "%";
+}
+</script>
+
+<!-- CAPÍTULO 5 -->
+<div class="chapter" id="c5" onclick="openChapter(5)">
+  <h2>Capítulo 5 <span class="lock">🔒</span></h2>
+  <p>O passado dela e as barreiras que ela criou.</p>
+</div>
+
+<!-- CAPÍTULO 6 -->
+<div class="chapter" id="c6" onclick="openChapter(6)">
+  <h2>Capítulo 6 <span class="lock">🔒</span></h2>
+  <p>Meus erros mais profundos e minha mudança.</p>
+</div>
+
+<script>
+// efeito máquina de escrever
+function typeWriter(text, element, speed = 20) {
+  element.innerHTML = "";
+  let i = 0;
+
+  function typing() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+
+  typing();
+}
+
+// sobrescrevendo openChapter com efeito melhorado
+function openChapter(n) {
+  if (n > currentChapter) return;
+
+  const titles = {
+    1: "Capítulo 1 - Ela para mim",
+    2: "Capítulo 2 - Dores e respeito",
+    3: "Capítulo 3 - Meus erros",
+    4: "Capítulo 4 - Distância e saudade",
+    5: "Capítulo 5 - O passado dela",
+    6: "Capítulo 6 - Mudança"
+  };
+
+  const texts = {
+    5: `Eu entendo que o passado dela deixou marcas.
+Que ela pode ter aprendido a se proteger, a se fechar em alguns momentos.
+Mas isso não diminui quem ela é.
+Só mostra o quanto ela já passou por coisas que eu talvez nem conheça completamente...`,
+
+    6: `Eu finalmente percebo meus erros com clareza.
+Pressionar.
+Insistir.
+Não respeitar momentos de silêncio.
+Deixar insegurança falar mais alto que maturidade.
+E isso machucou.
+Hoje eu só quero mudar isso com atitudes, não palavras...`
+  };
+
+  document.getElementById("reader").style.display = "block";
+  document.getElementById("chapterTitle").innerText = titles[n];
+
+  const textEl = document.getElementById("chapterText");
+
+  if (texts[n]) {
+    typeWriter(texts[n], textEl, 15);
+  }
+
+  if (n === currentChapter && currentChapter < 6) {
+    currentChapter++;
+    unlockChapter(currentChapter);
+    updateProgress();
+  }
+}
+
+function unlockChapter(n) {
+  const ch = document.getElementById("c" + n);
+  if (ch) ch.classList.add("active");
+}
+
+function updateProgress() {
+  let progress = ((currentChapter - 1) / 6) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+}
+</script>
+
+<!-- CAPÍTULO 7 -->
+<div class="chapter" id="c7" onclick="openChapter(7)">
+  <h2>Capítulo 7 <span class="lock">🔒</span></h2>
+  <p>A distância, as noites e a saudade.</p>
+</div>
+
+<!-- CAPÍTULO 8 -->
+<div class="chapter" id="c8" onclick="openChapter(8)">
+  <h2>Capítulo 8 <span class="lock">🔒</span></h2>
+  <p>O que eu espero daqui pra frente.</p>
+</div>
+
+<script>
+// carregar progresso salvo
+window.onload = function () {
+  let saved = localStorage.getItem("chapterProgress");
+  if (saved) {
+    currentChapter = parseInt(saved);
+
+    for (let i = 1; i <= currentChapter; i++) {
+      let ch = document.getElementById("c" + i);
+      if (ch) ch.classList.add("active");
+    }
+
+    updateProgress();
+  }
+};
+
+// salvar progresso
+function saveProgress() {
+  localStorage.setItem("chapterProgress", currentChapter);
+}
+
+// versão atualizada do unlock
+function unlockChapter(n) {
+  const ch = document.getElementById("c" + n);
+  if (ch) ch.classList.add("active");
+
+  saveProgress();
+}
+
+// atualizar progresso
+function updateProgress() {
+  let progress = ((currentChapter - 1) / 8) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+}
+
+// textos adicionais
+const extraTexts = {
+  7: `A distância pesa.
+Não só pela falta de presença, mas pelo silêncio dos dias.
+Tem noites em que o pensamento não me deixa dormir.
+E às vezes eu acordo de madrugada com o peito apertado...`,
+
+  8: `Eu não quero prometer perfeição.
+Quero prometer mudança.
+Quero aprender a respeitar o espaço dela, o tempo dela,
+e ser alguém que não machuca com pressa ou ansiedade.
+Só presença calma e verdadeira.`
+};
+
+// atualizar openChapter para incluir capítulos novos
+function openChapter(n) {
+  if (n > currentChapter) return;
+
+  const titles = {
+    7: "Capítulo 7 - Distância e saudade",
+    8: "Capítulo 8 - O futuro"
+  };
+
+  const textEl = document.getElementById("chapterText");
+  document.getElementById("reader").style.display = "block";
+
+  if (titles[n]) {
+    document.getElementById("chapterTitle").innerText = titles[n];
+  }
+
+  if (extraTexts[n]) {
+    typeWriter(extraTexts[n], textEl, 15);
+  }
+
+  if (n === currentChapter && currentChapter < 8) {
+    currentChapter++;
+    unlockChapter(currentChapter);
+    updateProgress();
+  }
+}
+</script>
+
+/* ===== CAPÍTULO FINAL (CARTA) ===== */
+const finalText = `
+Eu não quero ser alguém que te apressa,
+nem alguém que te pesa.
+
+Eu reconheço meus erros com clareza agora.
+Pressionei quando devia respeitar o silêncio.
+Insisti quando devia ter entendido o seu espaço.
+Pedi coisas no momento errado.
+Deixei minha insegurança falar mais alto do que o cuidado.
+
+E isso não é algo pequeno pra mim.
+Eu entendo o impacto disso em você.
+
+Eu também entendo suas dores.
+Os dias difíceis.
+As cólicas, o cansaço, o estresse do trabalho,
+e os momentos em que você só quer ficar em paz.
+
+Eu entendo que você já foi machucada antes.
+E que isso te fez se proteger.
+E eu não quero ser mais um motivo pra você se fechar.
+
+Mesmo com a distância,
+mesmo com as noites em que eu não durmo,
+mesmo quando acordo de madrugada com o peito pesado...
+
+Eu não quero te prender.
+Eu quero aprender a te respeitar.
+
+Se um dia você decidir continuar aqui,
+quero que seja porque se sente bem,
+e não por pressão, culpa ou obrigação.
+
+E se não for,
+eu ainda vou respeitar você.
+
+Porque o que eu sinto por você não é controle.
+É cuidado.
+É aprendizado.
+É mudança.
+`;
+
+/* ABRIR CARTA FINAL */
+function openChapter(n) {
+  if (n > currentChapter) return;
+
+  if (n === 8) {
+    document.getElementById("reader").style.display = "block";
+    document.getElementById("chapterTitle").innerText = "Carta Final";
+
+    typeWriter(finalText, document.getElementById("chapterText"), 12);
+
+    setTimeout(showEndScreen, 4000);
+  }
+}
+
+/* TELA FINAL */
+function showEndScreen() {
+  let end = document.createElement("div");
+  end.style.position = "fixed";
+  end.style.top = "0";
+  end.style.left = "0";
+  end.style.width = "100%";
+  end.style.height = "100%";
+  end.style.background = "rgba(0,0,0,0.9)";
+  end.style.display = "flex";
+  end.style.flexDirection = "column";
+  end.style.justifyContent = "center";
+  end.style.alignItems = "center";
+  end.style.color = "white";
+  end.style.zIndex = "999";
+
+  end.innerHTML = `
+    <h1 style="margin-bottom:20px;">Fim da história</h1>
+    <p style="max-width:300px; text-align:center;">
+      O que fica não são palavras... são mudanças.
+    </p>
+    <button onclick="restart()" style="margin-top:20px;">Recomeçar</button>
+  `;
+
+  document.body.appendChild(end);
+}
+
+/* REINICIAR */
+function restart() {
+  localStorage.removeItem("chapterProgress");
+  location.reload();
+}
+
+/* GARANTIR PROGRESSO FINAL */
+function updateProgress() {
+  let progress = ((currentChapter - 1) / 8) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+
+  if (currentChapter > 8) {
+    currentChapter = 8;
+  }
+}
+
+/* INICIALIZAÇÃO SEGURA */
+document.addEventListener("DOMContentLoaded", () => {
+  updateProgress();
+});
